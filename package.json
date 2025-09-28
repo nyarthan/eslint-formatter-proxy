@@ -1,0 +1,61 @@
+{
+  "name": "eslint-formatter-proxy",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Jannis Morgenstern <jannis.n.morgenstern@gmail.com> (https://github.com/nyarthan)",
+  "license": "MIT",
+  "keywords": [
+    "eslint",
+    "eslint-formatter",
+    "eslintformatter"
+  ],
+  "homepage": "https://github.com/nyarthan/eslint-formatter-proxy?tab=readme-ov-file",
+  "repository": "github:nyarthan/eslint-formatter-proxy",
+  "bugs": "https://github.com/nyarthan/eslint-formatter-proxy/issues",
+  "packageManager": "pnpm@10.8.0",
+  "type": "module",
+  "imports": {
+    "#package.json": "./package.json"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/src/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/src/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "husky || true",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "build": "rslib build",
+    "release": "pnpm publish --access public --provenance",
+    "prerelease": "pnpm build"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.29.6",
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@commitlint/format": "19.8.1",
+    "@commitlint/types": "19.8.1",
+    "@ianvs/prettier-plugin-sort-imports": "4.6.2",
+    "@nyarthan/prettier-config": "1.0.3",
+    "@rslib/core": "0.12.1",
+    "@types/node": "24.3.0",
+    "conventional-changelog-atom": "5.0.0",
+    "husky": "9.1.7",
+    "prettier": "3.6.2",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "eslint": ">=9"
+  }
+}
