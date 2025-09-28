@@ -18,3 +18,22 @@ pnpm add -D eslint-formatter-proxy
 ```
 
 ## Configuration
+
+ESLint does not provide a way to pass settings to custom formatters. So we have to use an environment variable.
+
+Set `ESLINT_FORMATTER_PROXY` to you configuration.
+
+It expects a list of names, or name-options tuples.
+Currently the only option is `outFile` which writes the result to disk instead of stdout.
+
+```sh
+ESLINT_FORMATTER_PROXY='["stylish", ["json", {"outFile": "./eslint.json"}]]' eslint -f eslint-formatter-proxy
+#                            │          │         │            │
+#                            │          │         │            └─ Write to <cwd>/eslint.json
+#                            │          │         │
+#                            │          │         └────────────── Write to file instead of stdout
+#                            │          │
+#                            │          └──────────────────────── Use builtin "json" formatter
+#                            │
+#                            └─────────────────────────────────── Use the builtin "stylish" formatter to print to stdout
+```

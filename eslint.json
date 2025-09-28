@@ -1,0 +1,105 @@
+[
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/commitlint.config.ts",
+    "messages": [
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 2,
+        "message": "'RuleConfigSeverity' is defined but never used.",
+        "line": 3,
+        "column": 10,
+        "nodeType": null,
+        "messageId": "unusedVar",
+        "endLine": 3,
+        "endColumn": 28
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "import type { UserConfig } from \"@commitlint/types\";\n\nimport { RuleConfigSeverity } from \"@commitlint/types\";\n\nconst config: UserConfig = {\n  extends: [\"@commitlint/config-conventional\"],\n  parserPreset: \"conventional-changelog-atom\",\n  formatter: \"@commitlint/format\",\n  defaultIgnores: false,\n};\n\nexport default config;\n",
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/dist/index.js",
+    "messages": [
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'process' is not defined.",
+        "line": 16,
+        "column": 21,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 16,
+        "endColumn": 28
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 1,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "import { createRequire } from \"node:module\";\nimport { dirname } from \"node:path\";\nimport { fileURLToPath } from \"node:url\";\nconst eslintModulePath = dirname(fileURLToPath(import.meta.resolve(\"eslint/package.json\")));\nconst src_require = createRequire(import.meta.url);\nasync function formatterProxy(results, context) {\n    const targetFormatters = getTargetFormatters();\n    const formattingResults = await Promise.all(targetFormatters.map(async (targetFormatter)=>{\n        const formatter = await resolveFormatter(targetFormatter);\n        const formattingResult = await formatter(structuredClone(results), structuredClone(context));\n        return formattingResult;\n    }));\n    return formattingResults.join(\"\\n\\n====================\\n\\n\");\n}\nfunction getTargetFormatters() {\n    const setting = process.env.ESLINT_FORMATTER_PROXY;\n    if (\"string\" != typeof setting) throw new Error(\"[eslint-formatter-proxy]: Environment variable ESLINT_FORMATTER_PROXY must be set.\");\n    const formatters = setting.split(\",\");\n    if (formatters.length < 1) throw new Error(\"[eslint-formatter-proxy]: At least one formatter must be specified.\");\n    return formatters;\n}\nasync function resolveFormatter(formatter) {\n    switch(formatter){\n        case \"html\":\n            return src_require(`${eslintModulePath}/lib/cli-engine/formatters/html`);\n        case \"json-with-metadata\":\n            return src_require(`${eslintModulePath}/lib/cli-engine/formatters/json-with-metadata`);\n        case \"json\":\n            return src_require(`${eslintModulePath}/lib/cli-engine/formatters/json`);\n        case \"stylish\":\n            return src_require(`${eslintModulePath}/lib/cli-engine/formatters/stylish`);\n        default:\n            return src_require(formatter);\n    }\n}\nexport { formatterProxy as default };\n",
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/dist/src/index.d.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/eslint.config.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/prettier.config.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/rslib.config.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/jannis/dev/nyarthan/eslint-formatter-proxy/src/index.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  }
+]
