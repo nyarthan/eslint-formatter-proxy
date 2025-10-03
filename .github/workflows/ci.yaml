@@ -19,7 +19,7 @@ jobs:
     runs-on: "ubuntu-22.04-arm"
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v5"
 
       - name: "Install pnpm"
         uses: "pnpm/action-setup@v4"
@@ -43,7 +43,7 @@ jobs:
     runs-on: "ubuntu-22.04-arm"
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v5"
 
       - name: "Install pnpm"
         uses: "pnpm/action-setup@v4"
@@ -67,7 +67,7 @@ jobs:
     runs-on: "ubuntu-22.04-arm"
     steps:
       - name: "Checkout Repository"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v5"
 
       - name: "Install pnpm"
         uses: "pnpm/action-setup@v4"
