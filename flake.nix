@@ -28,8 +28,14 @@
           devShells.default = pkgs.mkShell {
             packages = [
               pkgs.nodejs_24
-	      pkgs.pnpm_10
+              pkgs.pnpm_10
+              pkgs.lefthook
+              pkgs.nixfmt-rfc-style
             ];
+
+            shellHook = ''
+              lefthook install
+            '';
           };
         };
     };

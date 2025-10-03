@@ -29,7 +29,6 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "husky || true",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "build": "rslib build",
@@ -47,11 +46,10 @@
     "@ianvs/prettier-plugin-sort-imports": "4.7.0",
     "@nyarthan/prettier-config": "1.0.3",
     "@rslib/core": "0.12.1",
-    "@types/node": "24.3.0",
+    "@types/node": "24.6.2",
     "conventional-changelog-atom": "5.0.0",
     "eslint": "9.36.0",
     "globals": "16.4.0",
-    "husky": "9.1.7",
     "knip": "5.64.1",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
