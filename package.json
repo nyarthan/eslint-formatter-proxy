@@ -12,7 +12,7 @@
   "homepage": "https://github.com/nyarthan/eslint-formatter-proxy?tab=readme-ov-file",
   "repository": "github:nyarthan/eslint-formatter-proxy",
   "bugs": "https://github.com/nyarthan/eslint-formatter-proxy/issues",
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.18.0",
   "type": "module",
   "imports": {
     "#package.json": "./package.json"
