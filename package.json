@@ -37,7 +37,7 @@
     "knip": "knip --cache --include dependencies,files,exports,classMembers,nsTypes,nsExports,duplicates,binaries,types"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.7",
+    "@changesets/cli": "2.31.1",
     "@commitlint/cli": "20.1.0",
     "@commitlint/config-conventional": "20.0.0",
     "@commitlint/format": "20.0.0",
